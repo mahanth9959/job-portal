@@ -1,0 +1,1526 @@
+import { DEMO_PASSWORD } from '../lib/constants'
+
+export const SEED_REFERENCE = new Date()
+
+export function daysAgo(days, hour = 9) {
+  const date = new Date()
+  date.setDate(date.getDate() - days)
+  date.setHours(hour, 0, 0, 0)
+  return date.toISOString()
+}
+
+export function daysFromNow(days, hour = 18) {
+  const date = new Date()
+  date.setDate(date.getDate() + days)
+  date.setHours(hour, 0, 0, 0)
+  return date.toISOString()
+}
+
+export const BRAND_PROFILES = [
+  {
+    slug: 'northbeam',
+    name: 'Northbeam',
+    industry: 'Engineering',
+    city: 'Phoenix',
+    state: 'AZ',
+    domain: 'northbeam.co',
+    employees: 240,
+    founded: 2018,
+    tone: 'rose',
+    shape: 'ascend',
+    description:
+      'Climate intelligence infrastructure for utilities and grid operators. Northbeam turns messy grid data into decisions that keep the lights on and the load low.',
+    fallbackContact: { name: 'Emily Johnson', role: 'Engineering manager' },
+  },
+  {
+    slug: 'hushbird',
+    name: 'Hushbird',
+    industry: 'Support',
+    city: 'Houston',
+    state: 'TX',
+    domain: 'hushbird.co',
+    employees: 120,
+    founded: 2019,
+    tone: 'ink',
+    shape: 'arch',
+    description:
+      'Support software for independent pharmacies. Hushbird keeps every prescription question moving to the right person, quietly.',
+    fallbackContact: { name: 'Michael Williams', role: 'Support director' },
+  },
+  {
+    slug: 'fieldnote',
+    name: 'Fieldnote',
+    industry: 'Research',
+    city: 'Washington',
+    state: 'DC',
+    domain: 'fieldnote.studio',
+    employees: 76,
+    founded: 2017,
+    tone: 'blush',
+    shape: 'bloom',
+    description:
+      'Research operations for teams who talk to customers every week. Fieldnote makes the archive searchable, the synthesis shared and the next question obvious.',
+    fallbackContact: { name: 'Sophia Brown', role: 'Research lead' },
+  },
+  {
+    slug: 'halo-support',
+    name: 'Halo Support',
+    industry: 'Support',
+    city: 'Seattle',
+    state: 'WA',
+    domain: 'halosupport.co',
+    employees: 210,
+    founded: 2015,
+    tone: 'stone',
+    shape: 'orbit',
+    description:
+      'Human support automation for subscription businesses. Halo keeps the handoff human, even when the first reply is not.',
+    fallbackContact: { name: 'James Davis', role: 'Support operations' },
+  },
+  {
+    slug: 'common-thread',
+    name: 'Common Thread',
+    industry: 'People',
+    city: 'Jacksonville',
+    state: 'FL',
+    domain: 'commonthread.work',
+    employees: 54,
+    founded: 2021,
+    tone: 'rose',
+    shape: 'thread',
+    description:
+      'Recruiting operations for healthcare teams that cannot afford a bad hire. Common Thread builds the shortlist, the interview loop and the welcome.',
+    fallbackContact: { name: 'Emma Miller', role: 'People partner' },
+  },
+  {
+    slug: 'tandem-health',
+    name: 'Tandem Health',
+    industry: 'Product',
+    city: 'Fort Worth',
+    state: 'TX',
+    domain: 'tandemhealth.co',
+    employees: 340,
+    founded: 2014,
+    tone: 'ink',
+    shape: 'stack',
+    description:
+      'Care coordination software that keeps clinicians and families on the same page. Tandem is used in 180 clinics across the South and Midwest.',
+    fallbackContact: { name: 'Olivia Wilson', role: 'Product manager' },
+  },
+  {
+    slug: 'ironwood',
+    name: 'Ironwood',
+    industry: 'Engineering',
+    city: 'Indianapolis',
+    state: 'IN',
+    domain: 'ironwoodsystems.com',
+    employees: 180,
+    founded: 2012,
+    tone: 'blush',
+    shape: 'peak',
+    description:
+      'Logistics planning software for regional freight networks. Ironwood helps dispatchers see the whole route before the first truck leaves.',
+    fallbackContact: { name: 'Alexander Jones', role: 'Platform lead' },
+  },
+  {
+    slug: 'juniper-studio',
+    name: 'Juniper Studio',
+    industry: 'Marketing',
+    city: 'Fort Worth',
+    state: 'TX',
+    domain: 'juniper.studio',
+    employees: 32,
+    founded: 2016,
+    tone: 'stone',
+    shape: 'fold',
+    description:
+      'A brand and growth studio for independent labels and local institutions. Small by design, with a print room and a very good coffee machine.',
+    fallbackContact: { name: 'Ava Taylor', role: 'Studio director' },
+  },
+  {
+    slug: 'brightside',
+    name: 'Brightside',
+    industry: 'Support',
+    city: 'San Diego',
+    state: 'CA',
+    domain: 'brightside.care',
+    employees: 95,
+    founded: 2020,
+    tone: 'rose',
+    shape: 'beam',
+    description:
+      'Patient support programs for specialty clinics. Brightside handles the paperwork, the follow-ups and the human moments in between.',
+    fallbackContact: { name: 'Ethan Martinez', role: 'Patient support lead' },
+  },
+  {
+    slug: 'sunday-market',
+    name: 'Sunday Market',
+    industry: 'Marketing',
+    city: 'New York',
+    state: 'NY',
+    domain: 'sundaymarket.nyc',
+    employees: 140,
+    founded: 2018,
+    tone: 'ink',
+    shape: 'grid',
+    description:
+      'Neighborhood commerce tools for independent grocers. Sunday Market helps a two-aisle shop feel as easy to browse as the big store on the corner.',
+    fallbackContact: { name: 'Isabella Anderson', role: 'Marketing director' },
+  },
+  {
+    slug: 'cinder',
+    name: 'Cinder',
+    industry: 'Services',
+    city: 'Denver',
+    state: 'CO',
+    domain: 'cinderadvisory.com',
+    employees: 44,
+    founded: 2019,
+    tone: 'blush',
+    shape: 'split',
+    description:
+      'Climate risk advisory for insurers and city planners. Cinder reads the models so the people making the decision do not have to.',
+    fallbackContact: { name: 'Liam Garcia', role: 'Climate analyst' },
+  },
+  {
+    slug: 'ledgerline',
+    name: 'Ledgerline',
+    industry: 'Finance',
+    city: 'Jacksonville',
+    state: 'FL',
+    domain: 'ledgerline.co',
+    employees: 68,
+    founded: 2013,
+    tone: 'stone',
+    shape: 'stack',
+    description:
+      'Finance operations for founder-led companies. Ledgerline closes the books, builds the forecast and answers the questions before the board asks.',
+    fallbackContact: { name: 'Mia Rodriguez', role: 'Finance lead' },
+  },
+  {
+    slug: 'palace',
+    name: 'Palace',
+    industry: 'Engineering',
+    city: 'New York',
+    state: 'NY',
+    domain: 'palace.dev',
+    employees: 260,
+    founded: 2016,
+    tone: 'rose',
+    shape: 'arch',
+    description:
+      'Data infrastructure for real estate teams. Palace makes the building record, the lease and the maintenance history live in one place.',
+    fallbackContact: { name: 'Noah Hernandez', role: 'Engineering director' },
+  },
+  {
+    slug: 'aster-and-row',
+    name: 'Aster & Row',
+    industry: 'Finance',
+    city: 'Columbus',
+    state: 'OH',
+    domain: 'asterandrow.com',
+    employees: 38,
+    founded: 2011,
+    tone: 'ink',
+    shape: 'bloom',
+    description:
+      'Boutique accounting and payroll for creative businesses. Aster & Row keeps the books clean so the studio can stay focused on the work.',
+    fallbackContact: { name: 'Charlotte Lopez', role: 'Accounting partner' },
+  },
+  {
+    slug: 'kite',
+    name: 'Kite',
+    industry: 'Marketing',
+    city: 'San Jose',
+    state: 'CA',
+    domain: 'kite.tools',
+    employees: 150,
+    founded: 2017,
+    tone: 'blush',
+    shape: 'wave',
+    description:
+      'Developer tooling for teams shipping on the edge. Kite makes the deploy, the preview and the rollback feel like one motion.',
+    fallbackContact: { name: 'William Gonzalez', role: 'Developer marketing' },
+  },
+  {
+    slug: 'mosaic',
+    name: 'Mosaic',
+    industry: 'Finance',
+    city: 'Columbus',
+    state: 'OH',
+    domain: 'mosaic.finance',
+    employees: 88,
+    founded: 2018,
+    tone: 'stone',
+    shape: 'grid',
+    description:
+      'Accounting automation for multi-entity startups. Mosaic makes the close visible, the numbers comparable and the audit less of a season.',
+    fallbackContact: { name: 'Avery Perez', role: 'Controller' },
+  },
+  {
+    slug: 'well-and-wild',
+    name: 'Well & Wild',
+    industry: 'People',
+    city: 'Chicago',
+    state: 'IL',
+    domain: 'wellandwild.co',
+    employees: 62,
+    founded: 2015,
+    tone: 'rose',
+    shape: 'thread',
+    description:
+      'People operations for independent hospitality groups. Well & Wild builds the hiring, the training and the schedules that keep good teams together.',
+    fallbackContact: { name: 'Evelyn Sanchez', role: 'People director' },
+  },
+  {
+    slug: 'grove',
+    name: 'Grove',
+    industry: 'Training',
+    city: 'Columbus',
+    state: 'OH',
+    domain: 'grovelearning.org',
+    employees: 41,
+    founded: 2010,
+    tone: 'ink',
+    shape: 'bloom',
+    description:
+      'A learning design studio for public libraries and museums. Grove makes the exhibit, the workshop and the handout work as one experience.',
+    fallbackContact: { name: 'Logan Torres', role: 'Learning designer' },
+  },
+  {
+    slug: 'hearth',
+    name: 'Hearth',
+    industry: 'People',
+    city: 'Chicago',
+    state: 'IL',
+    domain: 'hearth.team',
+    employees: 110,
+    founded: 2019,
+    tone: 'blush',
+    shape: 'beam',
+    description:
+      'People systems for fast-growing healthcare teams. Hearth handles the handbook, the check-in and the first ninety days.',
+    fallbackContact: { name: 'Abigail Rivera', role: 'People operations' },
+  },
+  {
+    slug: 'copper',
+    name: 'Copper',
+    industry: 'Legal',
+    city: 'New York',
+    state: 'NY',
+    domain: 'copper.legal',
+    employees: 74,
+    founded: 2014,
+    tone: 'stone',
+    shape: 'split',
+    description:
+      'Contract intelligence for legal and finance teams. Copper reads the clause, finds the risk and leaves the judgment to the lawyer.',
+    fallbackContact: { name: 'Jackson Evans', role: 'Legal operations' },
+  },
+  {
+    slug: 'lantern',
+    name: 'Lantern',
+    industry: 'Legal',
+    city: 'Columbus',
+    state: 'OH',
+    domain: 'lantern.legal',
+    employees: 56,
+    founded: 2020,
+    tone: 'rose',
+    shape: 'orbit',
+    description:
+      'Legal operations software for public defenders. Lantern gives a busy case file one clear timeline and one place to look next.',
+    fallbackContact: { name: 'Elijah Stewart', role: 'Legal operations' },
+  },
+  {
+    slug: 'rowhouse',
+    name: 'Rowhouse',
+    industry: 'Sales',
+    city: 'Dallas',
+    state: 'TX',
+    domain: 'rowhouse.co',
+    employees: 120,
+    founded: 2012,
+    tone: 'ink',
+    shape: 'peak',
+    description:
+      'Sales enablement for residential real estate teams. Rowhouse keeps the listing, the follow-up and the closing document in one thread.',
+    fallbackContact: { name: 'Chloe Morales', role: 'Sales director' },
+  },
+  {
+    slug: 'fathom',
+    name: 'Fathom',
+    industry: 'Analytics',
+    city: 'Columbus',
+    state: 'OH',
+    domain: 'fathom.analytics',
+    employees: 92,
+    founded: 2018,
+    tone: 'blush',
+    shape: 'wave',
+    description:
+      'Product analytics for teams that ship weekly. Fathom turns the event stream into a short list of questions worth answering.',
+    fallbackContact: { name: 'Mateo Nguyen', role: 'Analytics lead' },
+  },
+  {
+    slug: 'hillside',
+    name: 'Hillside',
+    industry: 'Engineering',
+    city: 'Philadelphia',
+    state: 'PA',
+    domain: 'hillside.works',
+    employees: 300,
+    founded: 2009,
+    tone: 'stone',
+    shape: 'ascend',
+    description:
+      'Civic infrastructure and public works software. Hillside helps cities plan the repair, publish the map and finish the job before the next storm.',
+    fallbackContact: { name: 'Madison Collins', role: 'Engineering manager' },
+  },
+]
+
+export const COMPANY_BY_SLUG = Object.fromEntries(BRAND_PROFILES.map((company) => [company.slug, company]))
+
+function companyLocation(company) {
+  return `${company.city}, ${company.state}`
+}
+
+export function brandToCompany(profile, apiUser, index) {
+  const contact = apiUser
+    ? {
+        name: `${apiUser.firstName} ${apiUser.lastName}`,
+        role: profile.fallbackContact.role,
+        email: `${apiUser.firstName}.${apiUser.lastName}@${profile.domain}`
+          .toLowerCase()
+          .replace(/\s+/g, ''),
+        avatar: null,
+        apiAvatar: apiUser.image || null,
+      }
+    : {
+        name: profile.fallbackContact.name,
+        role: profile.fallbackContact.role,
+        email: `careers@${profile.domain}`,
+        avatar: null,
+      }
+
+  return {
+    id: `co-${profile.slug}`,
+    slug: profile.slug,
+    name: profile.name,
+    industry: profile.industry,
+    location: companyLocation(profile),
+    city: profile.city,
+    state: profile.state,
+    website: profile.domain,
+    email: `careers@${profile.domain}`,
+    phone: apiUser?.phone || null,
+    contact,
+    employees: profile.employees,
+    founded: profile.founded,
+    description: profile.description,
+    logo: { shape: profile.shape, tone: profile.tone },
+    source: apiUser ? 'dummyjson' : 'offline',
+    apiUserId: apiUser?.id || null,
+    createdAt: daysAgo(120 + index * 9),
+  }
+}
+
+export const FALLBACK_CANDIDATES = [
+  ['Noor Haddad', 'Product designer', 'Design', 'Brooklyn, NY', 'northbeam'],
+  ['Elena Park', 'Frontend engineer', 'Engineering', 'Austin, TX', 'palace'],
+  ['Marcus Reed', 'Customer support lead', 'Support', 'Houston, TX', 'hushbird'],
+  ['Priya Raman', 'Research operations', 'Research', 'Washington, DC', 'fieldnote'],
+  ['Tomas Silva', 'Account executive', 'Sales', 'Dallas, TX', 'rowhouse'],
+  ['Amara Okafor', 'People partner', 'People', 'Chicago, IL', 'well-and-wild'],
+  ['Felix Bauer', 'Data analyst', 'Analytics', 'Denver, CO', 'cinder'],
+  ['Lena Ortiz', 'Brand designer', 'Design', 'Seattle, WA', 'juniper-studio'],
+].map(([name, title, department, location, companySlug], index) => {
+  const [city, state] = location.split(', ')
+  return {
+    id: `cand-offline-${index + 1}`,
+    apiId: null,
+    name,
+    email: `${name.toLowerCase().replace(/\s+/g, '.')}@${COMPANY_BY_SLUG[companySlug]?.domain || 'hireline.dev'}`,
+    phone: `+1 555 01${String(20 + index).padStart(2, '0')}`,
+    avatar: null,
+    age: 27 + index,
+    city,
+    state,
+    location,
+    company: COMPANY_BY_SLUG[companySlug]?.name || 'Independent',
+    title,
+    department,
+    experience: 4 + (index % 7),
+    education: index % 2 ? 'BSc, Computer Science' : 'BFA, Design',
+    skills: skillsForDepartment(department),
+    availability: index % 3 === 0 ? 'Open to work' : 'Open to offers',
+    summary: `${title} based in ${location}. Open to teams building careful, useful things.`,
+    source: 'offline',
+  }
+})
+
+export function skillsForDepartment(department = '') {
+  const map = {
+    Engineering: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'AWS'],
+    Design: ['Product design', 'Figma', 'Design systems', 'Prototyping', 'User research'],
+    Product: ['Product strategy', 'Roadmapping', 'User research', 'Analytics', 'Stakeholder management'],
+    Marketing: ['Content strategy', 'Brand marketing', 'Campaigns', 'Copywriting', 'Analytics'],
+    Finance: ['Financial reporting', 'Excel', 'Forecasting', 'Payroll', 'Audit'],
+    Support: ['Customer support', 'Zendesk', 'Troubleshooting', 'SLA management', 'Documentation'],
+    People: ['Recruiting', 'People operations', 'Interviewing', 'Onboarding', 'HRIS'],
+    Research: ['Research operations', 'Interviewing', 'Synthesis', 'Survey design', 'Notion'],
+    Legal: ['Contract review', 'Legal operations', 'Compliance', 'Negotiation', 'Policy'],
+    Analytics: ['SQL', 'Python', 'Dashboards', 'Experiment design', 'Data storytelling'],
+    Sales: ['Pipeline management', 'Discovery', 'Negotiation', 'CRM', 'Forecasting'],
+    Training: ['Learning design', 'Facilitation', 'Curriculum', 'Accessibility', 'Storytelling'],
+    Services: ['Client advisory', 'Climate risk', 'Research', 'Presentation', 'Project management'],
+  }
+  return map[department] || ['Communication', 'Research', 'Planning', 'Collaboration']
+}
+
+export const SEED_JOBS = [
+  {
+    id: 'job-senior-product-designer',
+    title: 'Senior Product Designer',
+    companySlug: 'northbeam',
+    category: 'Design',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 135000,
+    salaryMax: 165000,
+    location: 'Phoenix, AZ',
+    workMode: 'Hybrid',
+    skills: ['Product design', 'Design systems', 'Figma', 'Prototyping', 'User research'],
+    deadline: daysFromNow(13),
+    status: 'Open',
+    postedAt: daysAgo(3),
+    description:
+      'Northbeam is looking for a senior product designer to own the tools that grid operators use when the day does not go to plan. You will work inside a small product trio, close to the people who keep the grid steady.',
+    responsibilities: [
+      'Own the end-to-end design of the dispatch and outage planning tools.',
+      'Turn dense operational data into screens a control room can read at a glance.',
+      'Build the design system alongside two engineers and a product manager.',
+      'Run weekly sessions with operators and bring the findings back to the team.',
+    ],
+    requirements: [
+      '5+ years designing software for complex, data-heavy work.',
+      'A portfolio that shows decisions, not only final screens.',
+      'Comfort with design systems, prototyping and research.',
+      'Clear writing and a calm point of view in critique.',
+    ],
+    benefits: [
+      'Medical, dental and vision from day one.',
+      'Four-day summer weeks and a December reset.',
+      'A $2,000 yearly learning budget.',
+    ],
+  },
+  {
+    id: 'job-staff-frontend-engineer',
+    title: 'Staff Frontend Engineer',
+    companySlug: 'northbeam',
+    category: 'Engineering',
+    type: 'Full-time',
+    experience: 'Lead',
+    salaryMin: 170000,
+    salaryMax: 205000,
+    location: 'Remote',
+    workMode: 'Remote',
+    skills: ['React', 'TypeScript', 'Design systems', 'Accessibility', 'Performance'],
+    deadline: daysFromNow(21),
+    status: 'Open',
+    postedAt: daysAgo(5),
+    description:
+      'Help Northbeam build the frontend platform for the next decade of grid software. You will set the patterns other engineers build on and keep the interface fast, accessible and honest.',
+    responsibilities: [
+      'Lead the frontend architecture for the control room suite.',
+      'Make the design system the default path, not an afterthought.',
+      'Mentor engineers through reviews and paired work.',
+      'Own performance and accessibility budgets for the product.',
+    ],
+    requirements: [
+      '7+ years building production React applications.',
+      'Deep TypeScript and browser performance experience.',
+      'A track record of shipping accessible interfaces.',
+      'Patience for regulated, high-stakes domains.',
+    ],
+    benefits: [
+      'Remote-first with an annual team week in Phoenix.',
+      'Home-office budget and a new laptop.',
+      'Four-day summer weeks.',
+    ],
+  },
+  {
+    id: 'job-support-lead-hushbird',
+    title: 'Support Lead',
+    companySlug: 'hushbird',
+    category: 'Support',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 68000,
+    salaryMax: 82000,
+    location: 'Houston, TX',
+    workMode: 'Hybrid',
+    skills: ['Customer support', 'Team leadership', 'Zendesk', 'Process design', 'SLA management'],
+    deadline: daysFromNow(9),
+    status: 'Open',
+    postedAt: daysAgo(2),
+    description:
+      'Hushbird is hiring a support lead to keep a small, senior support team steady. You will spend time in the queue, not only above it, and turn what you hear into product changes.',
+    responsibilities: [
+      'Lead a team of five support specialists across two time zones.',
+      'Own the weekly queue review and the escalation path.',
+      'Turn recurring issues into clear product notes.',
+      'Keep the help centre accurate and human.',
+    ],
+    requirements: [
+      '3+ years in customer support, including team leadership.',
+      'Comfort with Zendesk or a comparable tool.',
+      'Strong written communication and calm judgment.',
+      'Experience in healthcare or another regulated setting is a plus.',
+    ],
+    benefits: [
+      'Hybrid schedule, three days in the Houston studio.',
+      'Health cover for you and your dependants.',
+      'A quiet, well-stocked support floor.',
+    ],
+  },
+  {
+    id: 'job-research-ops-manager',
+    title: 'Research Operations Manager',
+    companySlug: 'fieldnote',
+    category: 'Research',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 110000,
+    salaryMax: 135000,
+    location: 'Washington, DC',
+    workMode: 'Hybrid',
+    skills: ['Research operations', 'Participant recruiting', 'Interviewing', 'Notion', 'Governance'],
+    deadline: daysFromNow(18),
+    status: 'Open',
+    postedAt: daysAgo(8),
+    description:
+      'Fieldnote is looking for a research operations manager to make customer conversations easy to run, easy to find and easy to trust. You will work across a research team of nine and a client base of product teams.',
+    responsibilities: [
+      'Own the participant panel, consent and scheduling workflow.',
+      'Keep the research archive organised and searchable.',
+      'Build lightweight templates for studies and synthesis.',
+      'Coach product teams on ethical, useful research practice.',
+    ],
+    requirements: [
+      '4+ years in research operations or a closely related role.',
+      'Experience with consent, privacy and participant care.',
+      'A systems mind and a warm inbox manner.',
+      'Comfort working with product, design and legal.',
+    ],
+    benefits: [
+      'Three days in the DC studio, two remote.',
+      'A research conference budget each year.',
+      'Generous parental leave.',
+    ],
+  },
+  {
+    id: 'job-platform-engineer-ironwood',
+    title: 'Platform Engineer',
+    companySlug: 'ironwood',
+    category: 'Engineering',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 150000,
+    salaryMax: 180000,
+    location: 'Indianapolis, IN',
+    workMode: 'Hybrid',
+    skills: ['Go', 'Kubernetes', 'PostgreSQL', 'Observability', 'Terraform'],
+    deadline: daysFromNow(30),
+    status: 'Open',
+    postedAt: daysAgo(11),
+    description:
+      'Ironwood runs the planning layer for regional freight networks. We need a platform engineer to make the deployment path boring, the data layer dependable and the on-call week humane.',
+    responsibilities: [
+      'Own the deployment platform and the observability stack.',
+      'Make Postgres changes safe and reversible.',
+      'Pair with product teams on reliability budgets.',
+      'Take a humane, well-documented turn on call.',
+    ],
+    requirements: [
+      '5+ years in platform, infrastructure or backend engineering.',
+      'Production Kubernetes and Terraform experience.',
+      'A practical approach to incidents and postmortems.',
+      'US work authorisation.',
+    ],
+    benefits: [
+      'Hybrid schedule with a downtown Indianapolis studio.',
+      'On-call compensation and a recovery day.',
+      'Annual profit share.',
+    ],
+  },
+  {
+    id: 'job-account-executive-rowhouse',
+    title: 'Account Executive',
+    companySlug: 'rowhouse',
+    category: 'Sales',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 90000,
+    salaryMax: 120000,
+    location: 'Dallas, TX',
+    workMode: 'On-site',
+    skills: ['Pipeline management', 'Discovery', 'Negotiation', 'CRM', 'Real estate'],
+    deadline: daysFromNow(7),
+    status: 'Open',
+    postedAt: daysAgo(1),
+    description:
+      'Rowhouse is looking for an account executive to work with residential real estate teams across Texas. This is a consultative role for someone who likes the messy middle between a listing and a close.',
+    responsibilities: [
+      'Own a book of mid-market brokerage accounts.',
+      'Run discovery with principals and operations leads.',
+      'Keep an accurate pipeline and a clear weekly forecast.',
+      'Bring customer language back to product and marketing.',
+    ],
+    requirements: [
+      '3+ years closing B2B software deals.',
+      'Comfort with a 30–60 day sales cycle.',
+      'Real estate or proptech experience is a plus.',
+      'Based in Dallas or willing to be in the office four days a week.',
+    ],
+    benefits: [
+      'Base plus uncapped commission.',
+      'Downtown Dallas office with parking.',
+      'Health cover and a yearly team offsite.',
+    ],
+  },
+  {
+    id: 'job-brand-designer-juniper',
+    title: 'Brand Designer',
+    companySlug: 'juniper-studio',
+    category: 'Design',
+    type: 'Contract',
+    experience: 'Mid',
+    salaryMin: 75000,
+    salaryMax: 95000,
+    location: 'Remote',
+    workMode: 'Remote',
+    skills: ['Brand identity', 'Typography', 'Figma', 'Art direction', 'Print'],
+    deadline: daysFromNow(24),
+    status: 'Open',
+    postedAt: daysAgo(6),
+    description:
+      'Juniper Studio is looking for a brand designer for a six-month contract with the option to extend. You will work on identity systems for independent labels, libraries and neighborhood institutions.',
+    responsibilities: [
+      'Build identity systems from the first sketch to the final guideline.',
+      'Art-direct photography and illustration partners.',
+      'Prepare print-ready files and work with the studio print room.',
+      'Present work with a clear, generous point of view.',
+    ],
+    requirements: [
+      '3+ years in brand or visual design.',
+      'A strong portfolio of identity work across print and digital.',
+      'Fluency in Figma and the Adobe suite.',
+      'Available for a six-month contract, 30–40 hours a week.',
+    ],
+    benefits: [
+      'Remote with two studio weeks in Fort Worth.',
+      'A materials and print budget.',
+      'Contract extension reviewed at month five.',
+    ],
+  },
+  {
+    id: 'job-technical-recruiter-common-thread',
+    title: 'Technical Recruiter',
+    companySlug: 'common-thread',
+    category: 'People',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 85000,
+    salaryMax: 105000,
+    location: 'Remote',
+    workMode: 'Remote',
+    skills: ['Technical recruiting', 'Interviewing', 'Sourcing', 'ATS', 'Employer brand'],
+    deadline: daysFromNow(12),
+    status: 'Open',
+    postedAt: daysAgo(4),
+    description:
+      'Common Thread is hiring a technical recruiter to work with healthcare software teams that are growing carefully. You will own the search from first message to signed offer, with a human process at every step.',
+    responsibilities: [
+      'Partner with hiring managers on role definition and scorecards.',
+      'Source and interview engineers, designers and product leads.',
+      'Keep candidates informed, even when the answer is no.',
+      'Improve the interview loop with evidence from each search.',
+    ],
+    requirements: [
+      '3+ years recruiting technical roles in-house or at a search firm.',
+      'Strong writing and a thoughtful candidate experience.',
+      'Comfort with an ATS and a light data habit.',
+      'US time zones, remote.',
+    ],
+    benefits: [
+      'Remote-first with a yearly team week.',
+      'Health cover and a wellness stipend.',
+      'A no-meeting Wednesday every week.',
+    ],
+  },
+  {
+    id: 'job-product-manager-tandem',
+    title: 'Product Manager',
+    companySlug: 'tandem-health',
+    category: 'Product',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 140000,
+    salaryMax: 170000,
+    location: 'Fort Worth, TX',
+    workMode: 'Hybrid',
+    skills: ['Product strategy', 'User research', 'Healthcare', 'Roadmapping', 'Analytics'],
+    deadline: daysFromNow(16),
+    status: 'Open',
+    postedAt: daysAgo(7),
+    description:
+      'Tandem Health is looking for a product manager to own the care coordination experience for families and clinicians. This is a role for someone who can hold a clinical workflow and a product roadmap in the same head.',
+    responsibilities: [
+      'Own the family and caregiver experience end to end.',
+      'Run discovery with clinicians, patients and support teams.',
+      'Set a quarterly roadmap with clear trade-offs.',
+      'Work inside a trio with design and engineering.',
+    ],
+    requirements: [
+      '4+ years product management in healthcare or another regulated domain.',
+      'A strong research habit and clear writing.',
+      'Comfort with clinical stakeholders and compliance review.',
+      'Based in Fort Worth or willing to relocate.',
+    ],
+    benefits: [
+      'Hybrid schedule with a Fort Worth office.',
+      'Medical cover and a family care stipend.',
+      'Four weeks of paid leave plus a winter reset.',
+    ],
+  },
+  {
+    id: 'job-support-engineer-halo',
+    title: 'Support Engineer',
+    companySlug: 'halo-support',
+    category: 'Support',
+    type: 'Full-time',
+    experience: 'Junior',
+    salaryMin: 62000,
+    salaryMax: 78000,
+    location: 'Seattle, WA',
+    workMode: 'Hybrid',
+    skills: ['Troubleshooting', 'JavaScript', 'Zendesk', 'APIs', 'Documentation'],
+    deadline: daysFromNow(20),
+    status: 'Open',
+    postedAt: daysAgo(9),
+    description:
+      'Halo Support is hiring a support engineer to sit between customers and the product team. You will debug integrations, write the answer once and help the next customer skip the queue.',
+    responsibilities: [
+      'Troubleshoot customer integrations and API questions.',
+      'Write clear help-centre articles and internal runbooks.',
+      'Escalate product bugs with a reproducible example.',
+      'Join the weekly support review and the on-call rota.',
+    ],
+    requirements: [
+      '1–2 years in technical support or a related role.',
+      'Comfort reading JavaScript and API documentation.',
+      'A patient, precise writing style.',
+      'Based in Seattle for two days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a transit pass.',
+      'Health cover and a learning budget.',
+      'A clear path to product or platform engineering.',
+    ],
+  },
+  {
+    id: 'job-content-strategist-sunday-market',
+    title: 'Content Strategist',
+    companySlug: 'sunday-market',
+    category: 'Marketing',
+    type: 'Part-time',
+    experience: 'Mid',
+    salaryMin: 55000,
+    salaryMax: 70000,
+    location: 'Remote',
+    workMode: 'Remote',
+    skills: ['Content strategy', 'Copywriting', 'Editorial', 'SEO', 'Analytics'],
+    deadline: daysFromNow(5),
+    status: 'Open',
+    postedAt: daysAgo(3),
+    description:
+      'Sunday Market is looking for a part-time content strategist to help independent grocers tell a better story. You will write the guides, shape the newsletter and keep the voice warm without becoming cute.',
+    responsibilities: [
+      'Own the editorial calendar and the weekly newsletter.',
+      'Write practical guides for shop owners and their teams.',
+      'Work with SEO and lifecycle on the content map.',
+      'Keep a small library of customer stories with consent.',
+    ],
+    requirements: [
+      '3+ years writing and editing for a product or publication.',
+      'A clear, useful voice and a good ear for quotes.',
+      'Comfort with SEO fundamentals and analytics.',
+      '20–24 hours a week, US time zones.',
+    ],
+    benefits: [
+      'Remote, part-time with a predictable schedule.',
+      'A writing budget for courses and books.',
+      'A yearly team lunch in New York.',
+    ],
+  },
+  {
+    id: 'job-climate-data-analyst-cinder',
+    title: 'Climate Data Analyst',
+    companySlug: 'cinder',
+    category: 'Analytics',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 95000,
+    salaryMax: 120000,
+    location: 'Denver, CO',
+    workMode: 'Hybrid',
+    skills: ['Python', 'SQL', 'Climate data', 'GIS', 'Data visualization'],
+    deadline: daysFromNow(14),
+    status: 'Open',
+    postedAt: daysAgo(10),
+    description:
+      'Cinder is hiring a climate data analyst to turn physical risk models into advice a city or an insurer can use. You will work with a small advisory team and a growing data set.',
+    responsibilities: [
+      'Analyse flood, heat and wildfire risk for client portfolios.',
+      'Build reproducible models and clear visual evidence.',
+      'Write short memos that separate certainty from assumption.',
+      'Present findings to non-technical decision makers.',
+    ],
+    requirements: [
+      '3+ years in data analysis, preferably climate or geospatial.',
+      'Strong Python and SQL; GIS experience welcome.',
+      'A talent for making uncertainty legible.',
+      'Based in Denver or able to be there three days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a Denver office.',
+      'Conference budget and a research day each month.',
+      'Health cover and a climate commuter benefit.',
+    ],
+  },
+  {
+    id: 'job-finance-ops-lead-ledgerline',
+    title: 'Finance Operations Lead',
+    companySlug: 'ledgerline',
+    category: 'Finance',
+    type: 'Full-time',
+    experience: 'Lead',
+    salaryMin: 130000,
+    salaryMax: 155000,
+    location: 'Jacksonville, FL',
+    workMode: 'Hybrid',
+    skills: ['Financial reporting', 'Forecasting', 'Payroll', 'Audit', 'Team leadership'],
+    deadline: daysFromNow(22),
+    status: 'Open',
+    postedAt: daysAgo(12),
+    description:
+      'Ledgerline is looking for a finance operations lead to run the monthly close and the small team behind it. You will work directly with founders and make the numbers useful before they are perfect.',
+    responsibilities: [
+      'Own the monthly close and the management report.',
+      'Lead a team of three finance associates.',
+      'Build the rolling forecast with the client leads.',
+      'Keep the audit trail clean and the client questions answered.',
+    ],
+    requirements: [
+      '6+ years in finance operations or accounting.',
+      'A professional accounting qualification or equivalent experience.',
+      'Comfort with founder-led, fast-moving clients.',
+      'Based in Jacksonville three days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a Jacksonville office.',
+      'Health cover and a yearly profit share.',
+      'Study support for a recognised qualification.',
+    ],
+  },
+  {
+    id: 'job-backend-engineer-palace',
+    title: 'Backend Engineer',
+    companySlug: 'palace',
+    category: 'Engineering',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 145000,
+    salaryMax: 175000,
+    location: 'New York, NY',
+    workMode: 'Hybrid',
+    skills: ['Python', 'PostgreSQL', 'APIs', 'AWS', 'Testing'],
+    deadline: daysFromNow(17),
+    status: 'Open',
+    postedAt: daysAgo(2),
+    description:
+      'Palace is hiring a backend engineer to work on the building record. You will design the APIs that keep leases, maintenance and ownership history consistent across a very old city.',
+    responsibilities: [
+      'Design and ship services around the building record.',
+      'Keep the data model clear and the migrations safe.',
+      'Pair with product on the edges of the domain.',
+      'Improve the test suite and the incident runbooks.',
+    ],
+    requirements: [
+      '3+ years building backend services in production.',
+      'Strong Python and PostgreSQL.',
+      'A practical approach to testing and observability.',
+      'Based in New York two days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a SoHo studio.',
+      'Health cover and a commuter benefit.',
+      'A $2,500 yearly learning budget.',
+    ],
+  },
+  {
+    id: 'job-payroll-specialist-aster',
+    title: 'Payroll Specialist',
+    companySlug: 'aster-and-row',
+    category: 'Finance',
+    type: 'Part-time',
+    experience: 'Junior',
+    salaryMin: 48000,
+    salaryMax: 58000,
+    location: 'Columbus, OH',
+    workMode: 'On-site',
+    skills: ['Payroll', 'Excel', 'Compliance', 'Customer service', 'Gusto'],
+    deadline: daysAgo(2),
+    status: 'Closed',
+    postedAt: daysAgo(28),
+    description:
+      'Aster & Row is looking for a payroll specialist to run payroll for a portfolio of creative businesses. This role has closed for new applications, but the team still welcomes a conversation for future openings.',
+    responsibilities: [
+      'Run semi-monthly payroll for 40 client companies.',
+      'Keep tax registrations and deductions current.',
+      'Answer payroll questions with care and a deadline.',
+      'Support the annual audit and the 1099 season.',
+    ],
+    requirements: [
+      '2+ years in payroll or bookkeeping.',
+      'Familiarity with Gusto or a comparable platform.',
+      'Careful with dates, amounts and names.',
+      'Based in Columbus, Ohio.',
+    ],
+    benefits: [
+      'Part-time schedule with a predictable week.',
+      'A downtown Columbus office.',
+      'Study support for payroll certification.',
+    ],
+  },
+  {
+    id: 'job-developer-advocate-kite',
+    title: 'Developer Advocate',
+    companySlug: 'kite',
+    category: 'Marketing',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 140000,
+    salaryMax: 165000,
+    location: 'San Jose, CA',
+    workMode: 'Remote',
+    skills: ['Developer relations', 'JavaScript', 'Technical writing', 'Public speaking', 'Community'],
+    deadline: daysFromNow(26),
+    status: 'Open',
+    postedAt: daysAgo(13),
+    description:
+      'Kite is looking for a developer advocate who can write the demo, give the talk and bring the feedback home. You will be the product’s voice in the places developers already trust.',
+    responsibilities: [
+      'Build demos and sample apps for the edge platform.',
+      'Write deeply useful technical articles and docs.',
+      'Speak at meetups and conferences without the hard sell.',
+      'Bring community feedback into the product review.',
+    ],
+    requirements: [
+      '4+ years in developer relations, engineering or technical writing.',
+      'Comfortable shipping JavaScript and explaining it clearly.',
+      'A public body of work you are proud of.',
+      'US time zones, remote.',
+    ],
+    benefits: [
+      'Remote-first with a yearly team week.',
+      'Conference and travel budget.',
+      'A hardware and home-office allowance.',
+    ],
+  },
+  {
+    id: 'job-product-analyst-fathom',
+    title: 'Product Analyst',
+    companySlug: 'fathom',
+    category: 'Analytics',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 105000,
+    salaryMax: 125000,
+    location: 'Columbus, OH',
+    workMode: 'Hybrid',
+    skills: ['SQL', 'Product analytics', 'Experiment design', 'Dashboards', 'Python'],
+    deadline: daysFromNow(11),
+    status: 'Open',
+    postedAt: daysAgo(5),
+    description:
+      'Fathom is hiring a product analyst to help teams ask better questions of their event data. You will work across the product and customer teams, turning a dashboard into a decision.',
+    responsibilities: [
+      'Own the core product metrics and their definitions.',
+      'Design and read experiments with product teams.',
+      'Build the weekly insight note, not another dashboard.',
+      'Help customers use their own data well.',
+    ],
+    requirements: [
+      '3+ years in product or business analytics.',
+      'Strong SQL and a good visual sense.',
+      'Experience with experiment design and causal thinking.',
+      'Based in Columbus two days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a Columbus studio.',
+      'Health cover and an education stipend.',
+      'A quarterly data team offsite.',
+    ],
+  },
+  {
+    id: 'job-patient-support-brightside',
+    title: 'Patient Support Specialist',
+    companySlug: 'brightside',
+    category: 'Support',
+    type: 'Full-time',
+    experience: 'Junior',
+    salaryMin: 45000,
+    salaryMax: 54000,
+    location: 'San Diego, CA',
+    workMode: 'On-site',
+    skills: ['Patient support', 'Empathy', 'Documentation', 'Healthcare', 'Scheduling'],
+    deadline: daysAgo(5),
+    status: 'Closed',
+    postedAt: daysAgo(35),
+    description:
+      'Brightside is looking for a patient support specialist to guide people through specialty care paperwork. This role has closed, but the team keeps a talent pool for the next intake.',
+    responsibilities: [
+      'Guide patients through enrolment and prior authorisation.',
+      'Keep the record accurate and the next step clear.',
+      'Work with clinics on scheduling and follow-up.',
+      'Escalate clinical questions to the right nurse.',
+    ],
+    requirements: [
+      '1+ year in patient support or healthcare administration.',
+      'Warm, precise communication.',
+      'Comfort with confidential health information.',
+      'Based in San Diego.',
+    ],
+    benefits: [
+      'On-site San Diego office with parking.',
+      'Health cover and a wellness stipend.',
+      'A structured first ninety days.',
+    ],
+  },
+  {
+    id: 'job-learning-designer-grove',
+    title: 'Learning Designer',
+    companySlug: 'grove',
+    category: 'Design',
+    type: 'Contract',
+    experience: 'Mid',
+    salaryMin: 70000,
+    salaryMax: 90000,
+    location: 'Remote',
+    workMode: 'Remote',
+    skills: ['Learning design', 'Facilitation', 'Accessibility', 'Storytelling', 'Curriculum'],
+    deadline: daysFromNow(19),
+    status: 'Open',
+    postedAt: daysAgo(6),
+    description:
+      'Grove is looking for a learning designer for a nine-month contract on a public library project. You will turn a complicated archive into a workshop series that a first-time visitor can enjoy.',
+    responsibilities: [
+      'Design a six-part workshop series for a public library.',
+      'Write facilitator guides and accessible handouts.',
+      'Work with the archive team on source material.',
+      'Test the first two sessions with a real audience.',
+    ],
+    requirements: [
+      '3+ years in learning design or facilitation.',
+      'A strong accessibility practice.',
+      'Comfort working with public institutions.',
+      'Available 25–30 hours a week for nine months.',
+    ],
+    benefits: [
+      'Remote with two Columbus studio weeks.',
+      'A materials budget for the workshops.',
+      'Contract extension reviewed at month seven.',
+    ],
+  },
+  {
+    id: 'job-people-partner-well-and-wild',
+    title: 'People Partner',
+    companySlug: 'well-and-wild',
+    category: 'People',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 105000,
+    salaryMax: 125000,
+    location: 'Chicago, IL',
+    workMode: 'Hybrid',
+    skills: ['People operations', 'Employee relations', 'Coaching', 'HRIS', 'Hiring'],
+    deadline: daysFromNow(15),
+    status: 'Open',
+    postedAt: daysAgo(9),
+    description:
+      'Well & Wild is hiring a people partner for a group of independent restaurants and hotels. You will support managers through the real parts of people work: a hard week, a promotion, a first hire.',
+    responsibilities: [
+      'Partner with general managers across eight venues.',
+      'Coach managers through employee relations and feedback.',
+      'Keep the hiring and onboarding process human.',
+      'Use the HRIS to spot what needs attention before it becomes a crisis.',
+    ],
+    requirements: [
+      '5+ years in people operations or HR business partnering.',
+      'Experience in hospitality or a similarly distributed workforce.',
+      'A calm, practical approach to conflict.',
+      'Based in Chicago three days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule with venue visits.',
+      'Health cover and a dining credit.',
+      'A yearly people team retreat.',
+    ],
+  },
+  {
+    id: 'job-contracts-counsel-copper',
+    title: 'Contracts Counsel',
+    companySlug: 'copper',
+    category: 'Legal',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 155000,
+    salaryMax: 185000,
+    location: 'New York, NY',
+    workMode: 'Hybrid',
+    skills: ['Contract review', 'Commercial law', 'Negotiation', 'Legal operations', 'Privacy'],
+    deadline: daysFromNow(28),
+    status: 'Open',
+    postedAt: daysAgo(14),
+    description:
+      'Copper is looking for contracts counsel to support a growing customer base and a product team building contract intelligence. You will review the unusual deal, improve the standard one and keep the advice practical.',
+    responsibilities: [
+      'Review and negotiate commercial agreements.',
+      'Own the template library and the fallback playbook.',
+      'Advise product and security on privacy terms.',
+      'Work with sales on the deals that need a human.',
+    ],
+    requirements: [
+      '5+ years in commercial contracts, in-house or at a firm.',
+      'Admission to the New York bar.',
+      'A practical, low-ego negotiation style.',
+      'Based in New York two days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a Manhattan office.',
+      'Health cover and a legal education budget.',
+      'A yearly team retreat.',
+    ],
+  },
+  {
+    id: 'job-civil-project-engineer-hillside',
+    title: 'Civil Project Engineer',
+    companySlug: 'hillside',
+    category: 'Engineering',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 100000,
+    salaryMax: 125000,
+    location: 'Philadelphia, PA',
+    workMode: 'On-site',
+    skills: ['Civil engineering', 'Project management', 'AutoCAD', 'Public works', 'Construction'],
+    deadline: daysFromNow(8),
+    status: 'Open',
+    postedAt: daysAgo(4),
+    description:
+      'Hillside is hiring a civil project engineer to help cities get public works projects from the map to the ribbon cutting. You will work with residents, contractors and city engineers who care about the details.',
+    responsibilities: [
+      'Manage a portfolio of street, park and water projects.',
+      'Review drawings and keep the schedule honest.',
+      'Run community sessions and publish clear updates.',
+      'Work with contractors on quality and change orders.',
+    ],
+    requirements: [
+      '4+ years in civil engineering or public works.',
+      'A PE licence or progress toward one.',
+      'Experience with AutoCAD and construction documents.',
+      'Based in Philadelphia for site visits.',
+    ],
+    benefits: [
+      'On-site with a Philadelphia office and site travel.',
+      'Health cover and a pension contribution.',
+      'A paid volunteer day each quarter.',
+    ],
+  },
+  {
+    id: 'job-legal-ops-analyst-lantern',
+    title: 'Legal Operations Analyst',
+    companySlug: 'lantern',
+    category: 'Legal',
+    type: 'Full-time',
+    experience: 'Mid',
+    salaryMin: 85000,
+    salaryMax: 105000,
+    location: 'Columbus, OH',
+    workMode: 'Hybrid',
+    skills: ['Legal operations', 'Data analysis', 'Process design', 'Excel', 'Public sector'],
+    deadline: daysFromNow(23),
+    status: 'Open',
+    postedAt: daysAgo(12),
+    description:
+      'Lantern is hiring a legal operations analyst to make public defence casework easier to see and easier to manage. You will work with attorneys and court administrators, not only dashboards.',
+    responsibilities: [
+      'Map the case intake and assignment process.',
+      'Build simple reports for public defenders and court partners.',
+      'Train teams on the new workflow and measure adoption.',
+      'Keep privacy and access rules visible in every change.',
+    ],
+    requirements: [
+      '3+ years in legal operations, consulting or public sector analysis.',
+      'Strong spreadsheet and process design skills.',
+      'Comfort with confidential records and court schedules.',
+      'Based in Columbus two days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a Columbus office.',
+      'Public service loan forgiveness eligible.',
+      'A learning budget for legal tech.',
+    ],
+  },
+  {
+    id: 'job-accounting-manager-mosaic',
+    title: 'Accounting Manager',
+    companySlug: 'mosaic',
+    category: 'Finance',
+    type: 'Full-time',
+    experience: 'Senior',
+    salaryMin: 110000,
+    salaryMax: 135000,
+    location: 'Columbus, OH',
+    workMode: 'Hybrid',
+    skills: ['Accounting', 'Team leadership', 'Month-end close', 'Audit', 'NetSuite'],
+    deadline: daysFromNow(10),
+    status: 'Open',
+    postedAt: daysAgo(7),
+    description:
+      'Mosaic is looking for an accounting manager to lead a small team through the close for multi-entity clients. You will make the process visible, the reconciliations calm and the audit request list shorter.',
+    responsibilities: [
+      'Own the close calendar and the consolidated reporting pack.',
+      'Lead and develop three accounting associates.',
+      'Review reconciliations and the multi-entity consolidation.',
+      'Work with the audit team on a clean, predictable cycle.',
+    ],
+    requirements: [
+      '5+ years in accounting, including team leadership.',
+      'A CPA or equivalent experience.',
+      'NetSuite or a comparable ERP.',
+      'Based in Columbus three days a week.',
+    ],
+    benefits: [
+      'Hybrid schedule and a Columbus office.',
+      'Health cover and a CPA study budget.',
+      'A yearly finance team retreat.',
+    ],
+  },
+]
+
+export const DEMO_USERS = [
+  {
+    id: 'alex-morgan',
+    name: 'Alex Morgan',
+    email: 'alex@hireline.dev',
+    password: DEMO_PASSWORD,
+    role: 'recruiter',
+    title: 'Talent lead',
+    company: 'Hireline',
+    phone: '+1 415 555 0134',
+    address: '88 Mission Street, San Francisco, CA',
+    city: 'San Francisco, CA',
+    skills: ['Talent strategy', 'Interviewing', 'Employer brand'],
+    experience: '9 years',
+    education: 'BA, Communications',
+    bio: 'I build hiring processes that leave both sides feeling respected. Currently looking after the talent team at Hireline.',
+    photo: null,
+    resume: { name: 'alex-morgan-resume.pdf', size: 184320, updatedAt: daysAgo(22) },
+    createdAt: daysAgo(120),
+    demo: true,
+  },
+  {
+    id: 'maya-chen',
+    name: 'Maya Chen',
+    email: 'maya@hireline.dev',
+    password: DEMO_PASSWORD,
+    role: 'candidate',
+    title: 'Senior product designer',
+    company: 'Independent',
+    phone: '+1 917 555 0188',
+    address: '41 Greenpoint Avenue, Brooklyn, NY',
+    city: 'Brooklyn, NY',
+    skills: ['Product design', 'Design systems', 'Figma', 'Prototyping', 'User research', 'Accessibility'],
+    experience: '7 years',
+    education: 'BFA, Rhode Island School of Design',
+    bio: 'Product designer working at the intersection of complex systems and calm interfaces. I care about research, accessibility and shipping the small thing that makes the day easier.',
+    photo: null,
+    resume: { name: 'maya-chen-resume.pdf', size: 262144, updatedAt: daysAgo(9) },
+    createdAt: daysAgo(96),
+    demo: true,
+  },
+]
+
+export const SEED_SAVED_JOBS = {
+  'alex-morgan': ['job-senior-product-designer', 'job-platform-engineer-ironwood'],
+  'maya-chen': ['job-brand-designer-juniper', 'job-product-manager-tandem', 'job-learning-designer-grove'],
+}
+
+export const MAYA_APPLICATIONS = [
+  {
+    jobId: 'job-senior-product-designer',
+    status: 'Interview',
+    appliedAt: daysAgo(18),
+    stageUpdatedAt: daysAgo(3),
+    note: 'I have spent the last four years designing operational tools and would love to bring that to the grid.',
+  },
+  {
+    jobId: 'job-product-manager-tandem',
+    status: 'Screening',
+    appliedAt: daysAgo(9),
+    stageUpdatedAt: daysAgo(2),
+    note: 'Interested in the family and caregiver side of care coordination.',
+  },
+  {
+    jobId: 'job-brand-designer-juniper',
+    status: 'Applied',
+    appliedAt: daysAgo(4),
+    stageUpdatedAt: daysAgo(4),
+    note: 'A six-month brand contract sounds like a good fit for my print and identity work.',
+  },
+  {
+    jobId: 'job-learning-designer-grove',
+    status: 'Offer',
+    appliedAt: daysAgo(32),
+    stageUpdatedAt: daysAgo(1),
+    note: 'The public library project is exactly the kind of work I want more of.',
+  },
+  {
+    jobId: 'job-product-analyst-fathom',
+    status: 'Withdrawn',
+    appliedAt: daysAgo(61),
+    stageUpdatedAt: daysAgo(12),
+    note: 'Withdrew after accepting a different contract.',
+  },
+]
+
+const STAGE_PATTERN = [
+  'Applied',
+  'Applied',
+  'Screening',
+  'Applied',
+  'Interview',
+  'Screening',
+  'Offer',
+  'Applied',
+  'Rejected',
+  'Screening',
+  'Interview',
+  'Rejected',
+  'Applied',
+  'Withdrawn',
+  'Rejected',
+  'Withdrawn',
+]
+
+export function buildApplications(jobs, candidates, currentUser = null) {
+  const applications = []
+  const seen = new Set()
+  let index = 0
+
+  for (let round = 0; round < 3 && applications.length < 72; round += 1) {
+    for (let c = 0; c < candidates.length && applications.length < 72; c += 1) {
+      const candidate = candidates[c]
+      const job = jobs[(c * 5 + round * 7) % jobs.length]
+      if (!candidate || !job) continue
+      const key = `${candidate.id}:${job.id}`
+      if (seen.has(key)) continue
+      seen.add(key)
+
+      const status = STAGE_PATTERN[index % STAGE_PATTERN.length]
+      const appliedDays = 5 + ((index * 11) % 258)
+      let stageDays = 2
+      if (status === 'Interview') stageDays = 5 + (index % 5)
+      else if (status === 'Offer') stageDays = 1 + (index % 3)
+      else if (status === 'Applied') stageDays = 1 + (index % 5)
+      else if (status === 'Screening') stageDays = 1 + (index % 6)
+      else if (status === 'Rejected') stageDays = 4 + (index % 26)
+      else if (status === 'Withdrawn') stageDays = 5 + (index % 18)
+
+      applications.push({
+        id: `app-seed-${index + 1}`,
+        jobId: job.id,
+        candidateId: candidate.id,
+        candidateName: candidate.name,
+        candidateEmail: candidate.email,
+        candidateAvatar: candidate.avatar,
+        candidateTitle: candidate.title,
+        candidateLocation: candidate.location,
+        status,
+        appliedAt: daysAgo(appliedDays),
+        stageUpdatedAt: daysAgo(Math.min(stageDays, appliedDays - 1)),
+        note:
+          status === 'Rejected'
+            ? 'The team moved forward with a candidate closer to the current scope.'
+            : 'Applied through the Hireline directory.',
+        source: 'seed',
+      })
+      index += 1
+    }
+  }
+
+  if (currentUser?.role === 'candidate') {
+    MAYA_APPLICATIONS.forEach((entry, i) => {
+      const job = jobs.find((item) => item.id === entry.jobId)
+      if (!job) return
+      applications.push({
+        id: `app-maya-${i + 1}`,
+        jobId: entry.jobId,
+        candidateId: currentUser.id,
+        candidateName: currentUser.name,
+        candidateEmail: currentUser.email,
+        candidateAvatar: currentUser.photo,
+        candidateTitle: currentUser.title,
+        candidateLocation: currentUser.city,
+        status: entry.status,
+        appliedAt: entry.appliedAt,
+        stageUpdatedAt: entry.stageUpdatedAt,
+        note: entry.note,
+        source: 'demo',
+      })
+    })
+  }
+
+  return applications
+}
+
+export function createSeedPortal(companies, candidates) {
+  const jobs = SEED_JOBS.map((job) => {
+    const company = companies.find((item) => item.slug === job.companySlug)
+    return {
+      ...job,
+      companyId: company?.id || `co-${job.companySlug}`,
+      recruiterId: 'alex-morgan',
+      createdAt: job.postedAt,
+    }
+  })
+  const demoCandidate = DEMO_USERS.find((user) => user.role === 'candidate')
+  const applications = buildApplications(jobs, candidates, demoCandidate)
+  return {
+    companies,
+    candidates,
+    jobs,
+    applications,
+    savedJobs: SEED_SAVED_JOBS,
+    directoryUpdatedAt: new Date().toISOString(),
+    directorySource: candidates.some((candidate) => candidate.source === 'dummyjson')
+      ? 'dummyjson'
+      : 'offline',
+  }
+}
+
+export const SAMPLE_DATA_NOTE =
+  'Company profiles, roles, salaries, demo accounts and seeded applications are sample content for this build. The candidate directory is seeded from DummyJSON.'
